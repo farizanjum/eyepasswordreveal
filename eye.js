@@ -1,7 +1,7 @@
 // Eye artwork is this recreation's rendering of Jhey's original interaction concept.
 function createFireEye(canvas) {
   const context = canvas.getContext('2d');
-  const scale = Math.min(window.devicePixelRatio || 1, 2);
+  const scale = 4;
   canvas.width = Math.round(120 * scale);
   canvas.height = Math.round(70 * scale);
   const random = (n) => { const v = Math.sin(n * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
@@ -23,7 +23,7 @@ function createFireEye(canvas) {
     iris.strokeStyle=`hsla(${28+r*24},95%,${15+r*65}%,${.3+r*.65})`;
     iris.lineWidth=.5+r*1.5; iris.stroke();
   }
-  iris.shadowColor='#ffec91'; iris.shadowBlur=3*scale;
+  iris.shadowColor='#ffec91'; iris.shadowBlur=9;
   iris.strokeStyle='#ffdd75'; iris.lineWidth=2;
   iris.beginPath(); iris.moveTo(0,-51); iris.bezierCurveTo(-17,-18,-14,22,0,53); iris.bezierCurveTo(13,20,16,-20,0,-51); iris.closePath();
   iris.fillStyle='#070302'; iris.fill(); iris.stroke(); iris.shadowBlur=0;
@@ -36,9 +36,10 @@ function createFireEye(canvas) {
     color:`hsla(${18+random(i+3)*34},100%,${44+random(i+8)*25}%,${.15+random(i+1)*.6})`,
     width:.7+random(i+9)*2
   }));
+  prepare(context);
   const halo=context.createRadialGradient(0,0,12,0,0,160);
   halo.addColorStop(0,'#ffcc6677'); halo.addColorStop(.4,'#ff660033'); halo.addColorStop(1,'#ff220000');
-  let timer, frame, active=false;
+  let frame, lastFrame=0, active=false;
   function draw(time) {
     context.setTransform(1,0,0,1,0,0); context.clearRect(0,0,canvas.width,canvas.height);
     prepare(context); context.globalCompositeOperation='source-over';
@@ -55,12 +56,15 @@ function createFireEye(canvas) {
   }
   function tick(time) {
     if (!active) return;
-    draw(time/1000);
-    timer=setTimeout(()=>{frame=requestAnimationFrame(tick);},32);
+    if (time-lastFrame >= 1000/60-1) {
+      draw(time/1000);
+      lastFrame=time;
+    }
+    frame=requestAnimationFrame(tick);
   }
-  function stop() { active=false; clearTimeout(timer); cancelAnimationFrame(frame); }
+  function stop() { active=false; cancelAnimationFrame(frame); }
   return {
-    start(reducedMotion) { stop(); draw(0); if (!reducedMotion) {active=true; frame=requestAnimationFrame(tick);} },
+    start(reducedMotion) { stop(); draw(0); lastFrame=0; if (!reducedMotion) {active=true; frame=requestAnimationFrame(tick);} },
     stop
   };
 }

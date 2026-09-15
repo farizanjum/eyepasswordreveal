@@ -28,10 +28,11 @@ label { color:var(--text-secondary); font-size:14px; }
 .fire-eye { position:absolute; width:120px; height:70px; transform:translateY(-28px); pointer-events:none; visibility:hidden; }
 .reveal-active .fire-eye,.reveal-active .password-overlay { visibility:visible; }
 .reveal-active .normal-eye { visibility:hidden; }
-.reveal-active .input-wrapper { border-color:#98592e; touch-action:none; }
+.reveal-active .input-wrapper { border-color:#98592e; outline:none; box-shadow:0 0 15px #d8431533; touch-action:none; }
 body::after { content:''; position:fixed; inset:0; pointer-events:none; background:#00000047; visibility:hidden; z-index:16; mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),black 0deg,transparent 8deg 28deg,black 36deg); -webkit-mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),black 0deg,transparent 8deg 28deg,black 36deg); }
 .spotlight-beam { position:fixed; inset:0; pointer-events:none; visibility:hidden; z-index:15; background:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),transparent 0deg,rgba(240,224,195,.22) 18deg,transparent 36deg); mask-image:radial-gradient(circle at var(--beam-x) var(--beam-y),black,transparent 80vmax); -webkit-mask-image:radial-gradient(circle at var(--beam-x) var(--beam-y),black,transparent 80vmax); }
 .reveal-active::after,.reveal-active .spotlight-beam { visibility:visible; }
+.spotlight-beam { mix-blend-mode:screen; }
 .submit-btn { margin-top:14px; min-height:46px; border:1px solid #56504a; border-radius:8px; background:#27231f; color:#fff; font:14px var(--font-sans); cursor:pointer; }
 .submit-btn:hover { background:#3b3026; }
 .eye-btn:focus-visible,.username-input:focus-visible,.submit-btn:focus-visible { outline:2px solid #e5b779; outline-offset:3px; }
