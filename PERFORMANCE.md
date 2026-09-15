@@ -29,6 +29,7 @@ The after sample predates the final label/favicon-only changes; deployment deliv
 
 - Chromium and Firefox: touch show/hide, immediate disappearance of light and plaintext, keyboard activation/Escape, no focus forced into the input when opening the eye, silent autofill synchronization, literal HTML-like input, reduced-motion still frame, offline reveal, submission and return.
 - Layouts checked from 320 through 1920 CSS pixels and short landscape windows.
+- Live Vercel site: Chromium iPhone SE and iPhone 13 device emulation, 540x720 Duo-sized viewport, and 1440x900 desktop all passed touch toggle, overflow, instant light removal, HTTPS submission/redirect, the minimal completion screen, and return navigation. These are emulations, not physical-device tests or verification of foldable hinge behavior.
 - WebKit: rendering and keyboard reveal/hide checked. Native touch automation on this Windows runner has a coordinate-scaling mismatch and did not pass; physical Safari/iPhone touch remains unverified.
 - No physical-device, old-browser, real password-vault, or real slow-network guarantee. Unsupported CSS masks fall back to a conventional password visibility toggle.
 

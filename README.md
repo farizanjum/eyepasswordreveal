@@ -2,6 +2,8 @@
 
 A free code recreation of the password-reveal effect created by **Jhey (@jh3yy)**.
 
+**[Live website](https://eyepasswordreveal.vercel.app)** · **[Source code](https://github.com/farizanjum/eyepasswordreveal)**
+
 ## Credit to the original creator
 
 **The original idea, design, and interaction belong to Jhey.** We recreated the effect in HTML, CSS, and JavaScript for this demo. We are not claiming to have invented it, and this is not Jhey's original source code or an official collaboration.
@@ -44,6 +46,8 @@ The iris is rendered once and reused. Flame rendering is capped below 30 updates
 ## Publish on Vercel
 
 Import this repository into Vercel. The included configuration builds the static files and adds the small submission handler. No environment variables or database are needed. `npm run build` creates the static files locally.
+
+This instance was deployed with the authenticated Vercel CLI (`vercel --prod`). Automatic GitHub deployments are not connected yet: Vercel requires the account owner to add a GitHub Login Connection first.
 
 ## License
 
