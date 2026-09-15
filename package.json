@@ -1,0 +1,12 @@
+{
+  "name": "password-reveal",
+  "version": "1.0.0",
+  "description": "Eye of Sauron password reveal interaction",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build.js"
+  },
+  "author": "Fariz Anjum",
+  "license": "ISC"
+}
