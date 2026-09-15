@@ -2,7 +2,9 @@
 
 Measured locally on September 15, 2026. These are lab measurements, not guarantees for every phone or connection.
 
-## Current version: visual detail restored
+## Visual detail restoration measurement (before text shimmer)
+
+The later text-shimmer correction adds an animated SVG displacement filter to the illuminated password and label. The numbers below predate that filter and are not a measurement of its rendering cost. Its animation stops when the reveal is hidden and is disabled for reduced motion. Chromium and Firefox checks verified changing text pixels, clear-on-hide, and reduced-motion behavior.
 
 The first optimization softened the flame detail and reduced animation smoothness. The current version restores the 480x280 canvas, warm screen-blended lighting, and updates up to 60fps while retaining the cached iris and precomputed flame constants.
 
