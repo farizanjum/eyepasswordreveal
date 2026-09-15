@@ -18,6 +18,7 @@ This project is a code recreation, not Jhey's original source or an official col
 - A live canvas eye with a fiery iris and moving flame strands.
 - The eye rises 28px above its button and casts a 36-degree spotlight.
 - Only password text within the beam is shown by the visual overlay.
+- Illuminated password text and its label use an animated SVG displacement filter for the heat-shimmer distortion visible in both reference videos. The text mask remains opaque so native password dots do not bleed through the letters. Only the visual copy is distorted; the input value is unchanged.
 - Escape, focus loss, or inactivity hides the reveal and clears the overlay.
 - Reduced-motion settings stop flame movement and CSS transitions.
 - The static iris is cached; flame frames run up to 60fps with the original 480x280 render resolution. Screen-sized lighting layers use screen blending, preserving the warm beam. No fade remains after hiding.

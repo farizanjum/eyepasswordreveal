@@ -28,7 +28,7 @@ Press **Ctrl+C** in the terminal to stop the server. If the port is already in u
 ## Try it
 
 1. Enter a dummy ID and password.
-2. Click the eye and move your pointer to reveal the password inside the light beam.
+2. Click the eye and move your pointer to reveal the password inside the light beam. The illuminated letters and Password label have the heat-shimmer distortion seen in Jhey's videos.
 3. Click the eye again or press **Escape** to hide it.
 
 To test browser autofill, click **Continue** and accept your browser's Save prompt if one appears. Click **Back** to return. If no prompt appears, manually add a test login in your browser's password manager for the exact site address you are using.
@@ -41,7 +41,7 @@ Use dummy credentials only. This is a visual demo, not a real login system. The 
 
 Small-screen layouts, 44px touch controls, reduced-motion support, and no external fonts, images, trackers, or frameworks. The eye works without further network access once the page has loaded. Offline reload and form submission still need a server connection.
 
-The iris is rendered once and reused. The eye retains its detailed 480x280 rendering, with flame updates up to 60fps, no animation when hidden, and a still frame for reduced motion. [Measured before/after results and browser coverage](PERFORMANCE.md).
+The iris is rendered once and reused. The eye retains its detailed 480x280 rendering, with flame updates up to 60fps and no animation when hidden. Text shimmer also stops when hidden, and reduced-motion mode disables both effects. [Measured before/after results and browser coverage](PERFORMANCE.md).
 
 ## Publish on Vercel
 
