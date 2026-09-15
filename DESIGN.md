@@ -20,7 +20,7 @@ This project is a code recreation, not Jhey's original source or an official col
 - Only password text within the beam is shown by the visual overlay.
 - Escape, focus loss, or inactivity hides the reveal and clears the overlay.
 - Reduced-motion settings stop flame movement and CSS transitions.
-- The static iris is cached; flame frames are capped below 30fps. Screen-sized lighting layers replace oversized ones. No fade remains after hiding.
+- The static iris is cached; flame frames run up to 60fps with the original 480x280 render resolution. Screen-sized lighting layers use screen blending, preserving the warm beam. No fade remains after hiding.
 - The eye scales down below 440px. Fields use 16px text and controls have 44px touch targets. Scrolling outside the active password field stays available.
 
 ## Demo behavior

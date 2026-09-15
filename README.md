@@ -41,7 +41,7 @@ Use dummy credentials only. This is a visual demo, not a real login system. The 
 
 Small-screen layouts, 44px touch controls, reduced-motion support, and no external fonts, images, trackers, or frameworks. The eye works without further network access once the page has loaded. Offline reload and form submission still need a server connection.
 
-The iris is rendered once and reused. Flame rendering is capped below 30 updates per second, stops when hidden, and uses no animation loop with reduced motion enabled. [Measured before/after results and browser coverage](PERFORMANCE.md).
+The iris is rendered once and reused. The eye retains its detailed 480x280 rendering, with flame updates up to 60fps, no animation when hidden, and a still frame for reduced motion. [Measured before/after results and browser coverage](PERFORMANCE.md).
 
 ## Publish on Vercel
 
