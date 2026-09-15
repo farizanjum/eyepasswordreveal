@@ -27,6 +27,13 @@ label { color:var(--text-secondary); font-size:14px; }
 .eye-icon { position:absolute; width:20px; height:20px; pointer-events:none; }
 .fire-eye { position:absolute; width:120px; height:70px; transform:translateY(-28px); pointer-events:none; visibility:hidden; }
 .reveal-active .fire-eye,.reveal-active .password-overlay { visibility:visible; }
+.filter-defs { position:absolute; pointer-events:none; overflow:hidden; }
+.password-label { position:relative; }
+.label-shimmer { position:absolute; inset:0; background:var(--bg-color); pointer-events:none; visibility:hidden; mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--eye-x) var(--eye-y),black 0deg 36deg,transparent 36deg 360deg); -webkit-mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--eye-x) var(--eye-y),black 0deg 36deg,transparent 36deg 360deg); }
+.heat-text { display:inline-block; }
+.reveal-active .heat-text { filter:url(#text-heat); }
+.reveal-active .label-shimmer { visibility:visible; }
+@media (prefers-reduced-motion:reduce) { .reveal-active .heat-text { filter:none; } }
 .reveal-active .normal-eye { visibility:hidden; }
 .reveal-active .input-wrapper { border-color:#98592e; outline:none; box-shadow:0 0 15px #d8431533; touch-action:none; }
 body::after { content:''; position:fixed; inset:0; pointer-events:none; background:#00000047; visibility:hidden; z-index:16; mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),black 0deg,transparent 8deg 28deg,black 36deg); -webkit-mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),black 0deg,transparent 8deg 28deg,black 36deg); }

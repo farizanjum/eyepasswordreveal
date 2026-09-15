@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const input = document.getElementById('password-input');
   const overlay = document.getElementById('password-overlay');
+  const passwordText = document.getElementById('password-text');
+  const passwordLabel = document.querySelector('.password-label');
+  const heatMotion = document.getElementById('heat-motion');
   const button = document.getElementById('eye-btn');
   const wrapper = document.getElementById('input-wrapper');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -20,10 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let pointerFrame;
   let point;
   let origin;
+  let heatActive = false;
 
   function syncText() {
     const text = revealed && masks ? input.value : '';
-    if (overlay.textContent !== text) overlay.textContent = text;
+    if (passwordText.textContent !== text) passwordText.textContent = text;
     overlay.scrollLeft = input.scrollLeft;
   }
   function position() {
@@ -34,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     body.style.setProperty('--beam-y', `${origin.y}px`);
     overlay.style.setProperty('--eye-x', `${origin.x - field.left}px`);
     overlay.style.setProperty('--eye-y', `${origin.y - field.top}px`);
+    const label = passwordLabel.getBoundingClientRect();
+    passwordLabel.style.setProperty('--eye-x', `${origin.x - label.left}px`);
+    passwordLabel.style.setProperty('--eye-y', `${origin.y - label.top}px`);
     aim(field.left + 20, field.top + field.height / 2);
   }
   function aim(x, y) {
@@ -50,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     input.type = 'password';
     button.setAttribute('aria-pressed', 'false');
     button.setAttribute('aria-label', 'Show password');
-    overlay.textContent = '';
+    passwordText.textContent = '';
+    if (heatActive) { heatMotion.endElement(); heatActive = false; }
     clearTimeout(timeout);
     clearInterval(syncTimer);
     cancelAnimationFrame(pointerFrame);
@@ -68,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
       syncText();
       body.classList.add('reveal-active');
       eye.start(motion.matches);
+      if (!motion.matches && typeof heatMotion.beginElement === 'function') {
+        heatMotion.beginElement();
+        heatActive = true;
+      }
       // Some password managers change the value without input/change events.
       syncTimer = setInterval(syncText, 200);
     } else {
