@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function aim(x, y) {
     const angle = Math.atan2(y - origin.y, x - origin.x) * 180 / Math.PI + 90;
     body.style.setProperty('--beam-angle', `${angle}deg`);
+    body.style.setProperty('--beam-length', `${Math.max(24, Math.hypot(x-origin.x, y-origin.y))}px`);
   }
   function renew() {
     clearTimeout(timeout);

@@ -2,7 +2,7 @@
   color-scheme: dark;
   --bg-color:#111; --text-primary:#fff; --text-secondary:#bbb;
   --input-bg:#1a1a1a; --input-border:#444;
-  --beam-angle:270deg; --beam-x:0px; --beam-y:0px; --beam-width:36deg;
+  --beam-angle:270deg; --beam-x:0px; --beam-y:0px; --beam-width:36deg; --beam-length:400px;
   --font-sans:system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
@@ -40,6 +40,19 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; backgrou
 .spotlight-beam { position:fixed; inset:0; pointer-events:none; visibility:hidden; z-index:15; background:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),transparent 0deg,rgba(240,224,195,.22) 18deg,transparent 36deg); mask-image:radial-gradient(circle at var(--beam-x) var(--beam-y),black,transparent 80vmax); -webkit-mask-image:radial-gradient(circle at var(--beam-x) var(--beam-y),black,transparent 80vmax); }
 .reveal-active::after,.reveal-active .spotlight-beam { visibility:visible; }
 .spotlight-beam { mix-blend-mode:screen; }
+.spotlight-beam { mask-image:radial-gradient(circle at var(--beam-x) var(--beam-y),black 0%,transparent var(--beam-length)); -webkit-mask-image:radial-gradient(circle at var(--beam-x) var(--beam-y),black 0%,transparent var(--beam-length)); }
+.password-overlay,.label-shimmer {
+  mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--eye-x) var(--eye-y),black 0deg 36deg,transparent 36deg 360deg),radial-gradient(circle at var(--eye-x) var(--eye-y),black 0 var(--beam-length),transparent var(--beam-length));
+  -webkit-mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--eye-x) var(--eye-y),black 0deg 36deg,transparent 36deg 360deg),radial-gradient(circle at var(--eye-x) var(--eye-y),black 0 var(--beam-length),transparent var(--beam-length));
+  mask-composite:intersect;
+  -webkit-mask-composite:source-in;
+}
+body::after {
+  mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),black 0deg,transparent 8deg 28deg,black 36deg),radial-gradient(circle at var(--beam-x) var(--beam-y),transparent 0,black var(--beam-length));
+  -webkit-mask-image:conic-gradient(from calc(var(--beam-angle) - 18deg) at var(--beam-x) var(--beam-y),black 0deg,transparent 8deg 28deg,black 36deg),radial-gradient(circle at var(--beam-x) var(--beam-y),transparent 0,black var(--beam-length));
+  mask-composite:add;
+  -webkit-mask-composite:source-over;
+}
 .submit-btn { margin-top:14px; min-height:46px; border:1px solid #56504a; border-radius:8px; background:#27231f; color:#fff; font:14px var(--font-sans); cursor:pointer; }
 .submit-btn:hover { background:#3b3026; }
 .eye-btn:focus-visible,.username-input:focus-visible,.submit-btn:focus-visible { outline:2px solid #e5b779; outline-offset:3px; }
