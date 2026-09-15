@@ -2,7 +2,15 @@
 
 Measured locally on September 15, 2026. These are lab measurements, not guarantees for every phone or connection.
 
-## Same-condition comparison
+## Current version: visual detail restored
+
+The first optimization softened the flame detail and reduced animation smoothness. The current version restores the 480x280 canvas, warm screen-blended lighting, and updates up to 60fps while retaining the cached iris and precomputed flame constants.
+
+Repeated with the same conditions below, three-run medians: 5,435 transferred bytes, 488ms first paint, 490.6ms DOM ready, 183ms animation-callback time over 3 seconds, and zero animation callbacks after hiding. This is about 74% less transfer and 60% less measured callback work than the original baseline, rather than the 90% reduction of the superseded lower-quality version. Timing is not a frame-rate guarantee.
+
+Current FCP runs: 548 / 484 / 488ms. Callback time: 183 / 167.4 / 190.6ms. Callback counts: 81 / 110 / 123. Source resource bodies: 15,019 bytes. All 240 flame strands and 420 cached iris lines remain.
+
+## Historical first optimization comparison
 
 Chromium 145.0.7632.6, headless, 390 x 844 viewport, 2x pixel density, touch enabled. CPU throttled 4x, network latency 150ms, download 150 KB/s, cache disabled. Three fresh browser contexts per version; table shows medians. Both versions used the same machine and instrumentation.
 
@@ -35,4 +43,4 @@ The after sample predates the final label/favicon-only changes; deployment deliv
 
 ## What changed
 
-The iris is prepared once, flame constants are precomputed, canvas resolution is capped at 2x display density, and drawing stops when hidden. Pointer updates are combined into one animation-frame update. Lighting covers only the viewport. Static files are compressed, there are no third-party assets, and the app has no framework runtime.
+The iris is prepared once, flame constants are precomputed, and drawing stops when hidden. Pointer updates are combined into one animation-frame update. Lighting covers only the viewport. Static files are compressed, there are no third-party assets, and the app has no framework runtime. The superseded 2x density cap has been removed to preserve the original eye detail.
