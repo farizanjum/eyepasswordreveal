@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="A free recreation of Jhey's fiery-eye password reveal interaction.">
+  <title>Fiery Eye Password Reveal</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="eye.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <main class="container">
+    <h1>Welcome back.</h1>
+    <form class="password-form" method="post" action="/demo-login" autocomplete="on">
+      <label for="username-input">ID or username</label>
+      <input id="username-input" class="username-input" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      <label for="password-input">Password</label>
+      <div class="input-wrapper" id="input-wrapper">
+        <input type="password" id="password-input" name="password" class="password-input" autocomplete="current-password" required spellcheck="false" autocapitalize="none">
+        <div class="password-overlay" id="password-overlay" aria-hidden="true"></div>
+        <button type="button" class="eye-btn" id="eye-btn" aria-label="Show password" aria-pressed="false" aria-controls="password-input">
+          <svg aria-hidden="true" class="eye-icon normal-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9 Q12 19 21 9 M5 12 L3 15 M9 14 L8 18 M15 14 L16 18 M19 12 L21 15"></path>
+          </svg>
+          <canvas id="fire-eye" class="fire-eye" width="120" height="70" aria-hidden="true"></canvas>
+        </button>
+      </div>
+      <button type="submit" class="submit-btn">Continue</button>
+    </form>
+    <section id="complete" hidden>
+      <a href="/">Back</a>
+    </section>
+  </main>
+  <div class="spotlight-beam" aria-hidden="true"></div>
+</body>
+</html>
