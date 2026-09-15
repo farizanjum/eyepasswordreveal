@@ -15,13 +15,14 @@ This project is a code recreation, not Jhey's original source or an official col
 
 ## Effect
 
-- A live canvas eye with a fiery iris and moving flame strands.
+- A WebGL eye with a white-hot iris, orange flame tongues, turbulent motion, and a dark vertical pupil. A Canvas renderer is retained as a fallback for unavailable/lost WebGL contexts.
 - The eye rises 28px above its button and casts a 36-degree spotlight.
+- Spotlight length follows the distance to the pointer. Password and label reveal masks use the same radius, so text beyond the beam stays masked.
 - Only password text within the beam is shown by the visual overlay.
 - Illuminated password text and its label use an animated SVG displacement filter for the heat-shimmer distortion visible in both reference videos. The text mask remains opaque so native password dots do not bleed through the letters. Only the visual copy is distorted; the input value is unchanged.
 - Escape, focus loss, or inactivity hides the reveal and clears the overlay.
 - Reduced-motion settings stop flame movement and CSS transitions.
-- The static iris is cached; flame frames run up to 60fps with the original 480x280 render resolution. Screen-sized lighting layers use screen blending, preserving the warm beam. No fade remains after hiding.
+- The shader runs up to 60fps at 480x280; the Canvas fallback caches its static iris. Screen-sized lighting layers use screen blending, preserving the warm beam. No fade remains after hiding.
 - The eye scales down below 440px. Fields use 16px text and controls have 44px touch targets. Scrolling outside the active password field stays available.
 
 ## Demo behavior

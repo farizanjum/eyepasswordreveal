@@ -2,6 +2,12 @@
 
 Measured locally on September 15, 2026. These are lab measurements, not guarantees for every phone or connection.
 
+## Current shader version
+
+The current eye uses WebGL procedural flames rather than the Canvas line renderer measured below. The pixel surface is fixed at 480x280, animation stops when hidden, reduced-motion draws a still frame, and Canvas is retained as a fallback. The beam now follows cursor distance; reveal masks are radius-limited too. Local checks verified WebGL rendering, forced Canvas fallback, mobile toggle/hide, and short/long beam lengths.
+
+The historical CPU/callback comparisons below do not measure this shader's GPU cost or the SVG text filter. Do not interpret them as current shader performance scores. Physical iPhone GPU performance remains unmeasured.
+
 ## Visual detail restoration measurement (before text shimmer)
 
 The later text-shimmer correction adds an animated SVG displacement filter to the illuminated password and label. The numbers below predate that filter and are not a measurement of its rendering cost. Its animation stops when the reveal is hidden and is disabled for reduced motion. Chromium and Firefox checks verified changing text pixels, clear-on-hide, and reduced-motion behavior.
